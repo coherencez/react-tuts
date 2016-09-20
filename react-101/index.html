@@ -34,8 +34,9 @@
             }.bind(this)
           });
         },
-        handleCommentSubmit: function() {
+        handleCommentSubmit: function(dataObjFromChild__CommentForm) {
           // TODO: submit to the sever and refresh the list
+          console.log('Hello from the handleCommentSubmit function!', dataObjFromChild__CommentForm)
         },
         getInitialState: function() {
           return {data: []};
@@ -49,7 +50,7 @@
             <div className="commentBox">
               <h1>Comments: </h1>
               <CommentList data={this.state.data}/>
-              <CommentForm onSubmit={this.handleCommentSubmit}/>
+              <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
             </div>
           );
         }
