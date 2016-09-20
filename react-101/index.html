@@ -34,6 +34,9 @@
             }.bind(this)
           });
         },
+        handleCommentSubmit: function() {
+          // TODO: submit to the sever and refresh the list
+        },
         getInitialState: function() {
           return {data: []};
         },
@@ -46,7 +49,7 @@
             <div className="commentBox">
               <h1>Comments: </h1>
               <CommentList data={this.state.data}/>
-              <CommentForm />
+              <CommentForm onSubmit={this.handleCommentSubmit}/>
             </div>
           );
         }
@@ -85,8 +88,8 @@
            if(!text || !author) {
              return;
            }
-           //TODO: send request to server
-           this.setState({author: '', text: ''})
+           this.props.onCommentSubmit({author: author, text: text});
+           this.setState({author: '', text: ''});
          },
          render: function() {
           return (
